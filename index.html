@@ -355,6 +355,104 @@ details.ajustes[open] summary::after { content: "−"; }
 .aviso { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); translate: -50% 0; background: var(--texto); color: var(--chao); padding: 10px 16px; border-radius: 10px; font-weight: 600; font-size: 14px; z-index: 20; }
 .aviso[hidden] { display: none; }
 .copiar-texto { width: 100%; min-height: 120px; font: 13px var(--f-numero); background: var(--painel-2); color: var(--texto); border: 1px solid var(--linha); border-radius: 10px; padding: 10px; }
+/* ---------- Abas ---------- */
+.abas { display: flex; gap: 4px; background: var(--painel-2); border: 1px solid var(--linha); border-radius: 999px; padding: 4px; }
+.abas button { border: 0; background: transparent; padding: 8px 14px; border-radius: 999px; color: var(--suave); font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 6px; }
+.abas button[aria-selected="true"] { color: var(--texto); background: var(--prata-fundo); box-shadow: inset 0 0 0 1px var(--linha-forte); }
+@media (max-width: 640px) { .topo { justify-content: center; } .abas, .modos { width: 100%; } .abas button, .modos button { flex: 1; justify-content: center; } }
+
+/* ---------- Meus produtos ---------- */
+.vista-produtos { display: grid; gap: 16px; container-type: inline-size; min-width: 0; }
+.p-cartao { padding: 22px; display: grid; gap: 14px; min-width: 0; }
+.p-centro { max-width: 600px; width: 100%; justify-self: center; }
+.p-cartao h1 { margin: 0; font: 700 clamp(24px, 3.4vw, 34px)/1.08 var(--f-titulo); letter-spacing: -.03em; text-wrap: balance; }
+.p-cartao > p, .p-nota { margin: 0; color: var(--suave); font-size: 14px; }
+.p-nota b { color: var(--texto); }
+.p-form { display: grid; gap: 12px; }
+.soltar {
+  border: 1.5px dashed var(--linha-forte); border-radius: 14px; padding: 28px 16px; display: grid; gap: 6px; place-items: center; text-align: center;
+  cursor: pointer; background: var(--painel-2); color: var(--holo); transition: border-color .15s, background .15s;
+}
+.soltar b { color: var(--texto); font: 700 16px var(--f-titulo); }
+.soltar small { color: var(--fraco); }
+.soltar:hover, .soltar.sobre { border-color: var(--holo); background: var(--holo-fundo); }
+.botao-forte {
+  justify-self: start; border: 0; border-radius: 11px; padding: 11px 18px; font-weight: 700; font-size: 14.5px;
+  background: var(--holo); color: var(--sobre-holo); box-shadow: 0 0 18px var(--holo-fundo);
+}
+.botao-forte:hover { background: var(--holo-2); }
+.p-erro { margin: 0; color: var(--ruim); font-size: 13.5px; font-weight: 600; }
+.p-alerta { color: var(--atencao); }
+.p-linha-botoes { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.p-perigo { color: var(--ruim); border-color: color-mix(in srgb, var(--ruim) 45%, transparent); }
+.p-confirma { border: 1px solid color-mix(in srgb, var(--ruim) 40%, transparent); border-radius: 13px; padding: 14px; display: grid; gap: 10px; }
+.p-confirma p { margin: 0; color: var(--suave); font-size: 13.5px; }
+.p-confirma b { color: var(--texto); }
+.p-arquivo { border: 1px solid var(--linha); border-radius: 14px; padding: 14px; display: grid; gap: 10px; background: var(--painel-2); min-width: 0; }
+.p-arquivo-topo { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
+.p-arquivo-topo b { overflow-wrap: anywhere; }
+.p-mapa { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr)); gap: 10px; }
+.chip.info { color: var(--holo); background: var(--holo-fundo); }
+.p-cabeca { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; justify-content: space-between; }
+.p-cabeca .coroa { margin-bottom: 8px; }
+label.botao { cursor: pointer; }
+.p-ajustes { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.p-resumo { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.p-num {
+  text-align: left; border: 1px solid var(--linha); background: var(--painel-2); border-radius: 13px; padding: 12px 14px; min-width: 0;
+  display: grid; gap: 4px; transition: border-color .15s, box-shadow .15s;
+}
+.p-num small { font: 600 10px/1.2 var(--f-numero); letter-spacing: .1em; text-transform: uppercase; color: var(--fraco); }
+.p-num b { font: 600 24px/1 var(--f-numero); font-variant-numeric: tabular-nums; }
+.p-num.ruim b { color: var(--ruim); } .p-num.atencao b { color: var(--atencao); } .p-num.bom b { color: var(--bom); } .p-num.info b, .p-num.holo b { color: var(--holo); }
+.p-num[aria-pressed="true"] { border-color: var(--holo); box-shadow: 0 0 0 1px var(--holo) inset, 0 0 20px var(--holo-fundo); }
+.p-ferramentas { display: flex; flex-wrap: wrap; gap: 8px; }
+.p-busca { flex: 1 1 220px; }
+.p-tabela-caixa { overflow-x: auto; margin-inline: -4px; }
+.p-tabela { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+.p-tabela th { text-align: left; font: 600 9.5px/1.2 var(--f-numero); letter-spacing: .1em; text-transform: uppercase; color: var(--fraco); padding: 8px 6px; border-bottom: 1px solid var(--linha); white-space: nowrap; }
+.p-tabela td { padding: 10px 6px; border-bottom: 1px solid var(--linha); vertical-align: middle; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.p-tabela td.p-prod { white-space: normal; min-width: 200px; max-width: 320px; }
+.p-prod b { display: block; font-weight: 600; line-height: 1.3; }
+.p-prod small { display: block; color: var(--fraco); font: 500 11.5px var(--f-numero); margin-top: 2px; overflow-wrap: anywhere; }
+.p-canal { display: inline-flex; align-items: center; gap: 7px; }
+.p-canal .logo { --tam: 20px; }
+.p-custo { width: 108px; }
+.p-custo input { padding: 6px 8px; font-size: 13.5px; }
+.p-tabela tr.p-perdendo td:first-child { box-shadow: inset 3px 0 0 var(--ruim); }
+.p-tabela tr.p-limite td:first-child { box-shadow: inset 3px 0 0 var(--atencao); }
+.p-tabela tr.p-ganhando td:first-child { box-shadow: inset 3px 0 0 var(--bom); }
+.p-tabela td:first-child { padding-left: 12px; }
+.p-mais { justify-self: center; margin-top: 12px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@container (max-width: 900px) {
+  .p-resumo { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .p-ajustes { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* No celular e no tablet em pé, cada produto vira um cartão. */
+@container (max-width: 820px) {
+  .p-tabela, .p-tabela tbody { display: block; }
+  .p-tabela thead { display: none; }
+  .p-tabela tr {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 12px; padding: 14px; margin-bottom: 10px;
+    border: 1px solid var(--linha); border-radius: 13px; background: var(--painel-2);
+  }
+  .p-tabela tr.p-perdendo { border-color: color-mix(in srgb, var(--ruim) 45%, transparent); }
+  .p-tabela tr.p-limite { border-color: color-mix(in srgb, var(--atencao) 40%, transparent); }
+  .p-tabela td { display: block; padding: 0; border: 0; white-space: normal; min-width: 0; }
+  .p-tabela td:first-child { padding-left: 0; box-shadow: none !important; }
+  .p-tabela td.p-prod { grid-column: 1 / -1; max-width: none; min-width: 0; }
+  .p-tabela td.p-acao { grid-column: 1 / -1; }
+  .p-tabela td.p-acao:empty { display: none; }
+  .p-tabela td[data-r]::before { content: attr(data-r); display: block; font: 600 9.5px/1.2 var(--f-numero); letter-spacing: .1em; text-transform: uppercase; color: var(--fraco); margin-bottom: 4px; }
+  .p-custo { width: 100%; }
+}
+@container (max-width: 480px) {
+  .p-resumo { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .p-resumo .p-num:first-child { grid-column: 1 / -1; }
+  .p-tabela tr { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .p-cartao { padding: 18px 16px; }
+}
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 
@@ -369,13 +467,17 @@ details.ajustes[open] summary::after { content: "−"; }
         <small>Calculadora de margem para marketplaces</small>
       </div>
     </div>
+    <nav class="abas" role="tablist" aria-label="Seções">
+      <button type="button" role="tab" id="aba-calculadora" aria-selected="true">Calculadora</button>
+      <button type="button" role="tab" id="aba-produtos" aria-selected="false"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg> Meus produtos</button>
+    </nav>
     <div class="modos" role="group" aria-label="Modo de cálculo">
       <button type="button" id="modo-preco" aria-pressed="true">Já tenho o preço</button>
       <button type="button" id="modo-meta" aria-pressed="false">Quero uma meta</button>
     </div>
   </header>
 
-  <div class="grade">
+  <div class="grade" id="vista-calculadora">
     <form class="ficha vidro" id="ficha" autocomplete="off" novalidate>
       <section class="bloco">
         <h2>Produto <span class="exemplo" id="marca-exemplo">Valores de exemplo</span></h2>
@@ -494,6 +596,7 @@ details.ajustes[open] summary::after { content: "−"; }
       </footer>
     </main>
   </div>
+  <section class="vista-produtos" id="vista-produtos" hidden aria-label="Meus produtos"></section>
 </div>
 <div class="aviso" id="aviso" role="status" hidden></div>
 
@@ -869,7 +972,461 @@ details.ajustes[open] summary::after { content: "−"; }
     return lista;
   }
 
-  raiz.MotorDiva = { tarifas, detalhar, precoParaMeta, precoMinimo, comparar, porPeso, canal };
+  // Faixas de margem usadas em toda a calculadora: 12% ou mais é saudável; abaixo de 5%, perigoso.
+  const FAIXAS = { boa: 0.12, limite: 0.05 };
+  const situacaoDaMargem = (m) => (m == null ? "perdendo" : m >= FAIXAS.boa ? "ganhando" : m >= FAIXAS.limite ? "limite" : "perdendo");
+
+  /**
+   * Analisa a lista de produtos importados. Cada linha: { sku, titulo, preco, custo, pesoKg, canal, categoria? }.
+   * `base` traz o que vale para todas (imposto, categoria, peso padrão, Flex, ajustes da conta).
+   * Situação: ganhando (≥ 12%), limite (5–12%), perdendo (< 5%), sem-custo, sem-preco ou sem-canal.
+   */
+  function analisarCarteira(linhas, base) {
+    const itens = linhas.map((l, i) => {
+      const item = { ...l, indice: i };
+      if (!l.canal || !T.CANAIS.some((c) => c.id === l.canal)) return { ...item, situacao: "sem-canal" };
+      if (!(l.preco > 0)) return { ...item, situacao: "sem-preco" };
+      if (l.custo == null) return { ...item, situacao: "sem-custo" };
+      const e = { ...base, custo: l.custo, extras: 0, pesoKg: l.pesoKg ?? base.pesoKg, categoria: l.categoria || base.categoria };
+      const d = detalhar(l.canal, l.preco, e);
+      const alvo = precoParaMeta(l.canal, e, { tipo: "margem", valor: FAIXAS.boa });
+      return {
+        ...item, ...d, sku: l.sku, titulo: l.titulo, indice: i,
+        minimo: precoMinimo(l.canal, e),
+        precoAlvo: alvo.erro ? null : alvo.preco,
+        situacao: situacaoDaMargem(d.margem),
+      };
+    });
+    const conta = (s) => itens.filter((x) => x.situacao === s).length;
+    const analisados = itens.filter((x) => x.lucro != null);
+    const perdendo = itens.filter((x) => x.situacao === "perdendo");
+    const porCanal = {};
+    for (const x of perdendo) porCanal[x.canal] = (porCanal[x.canal] || 0) + 1;
+    const canalMaisPerdendo = Object.entries(porCanal).sort((a, b) => b[1] - a[1])[0] || null;
+    return {
+      itens,
+      resumo: {
+        total: itens.length,
+        ganhando: conta("ganhando"), limite: conta("limite"), perdendo: perdendo.length,
+        semCusto: conta("sem-custo"), semPreco: conta("sem-preco"), semCanal: conta("sem-canal"),
+        lucroTotal: analisados.reduce((s, x) => s + x.lucro, 0),
+        piores: [...perdendo].sort((a, b) => a.lucro - b.lucro).slice(0, 5),
+        canalMaisPerdendo: canalMaisPerdendo ? { canal: canalMaisPerdendo[0], quantos: canalMaisPerdendo[1] } : null,
+        // Quantos chegam a 12% de margem com um aumento de até 10% no preço.
+        alcancaCom10: analisados.filter((x) => x.situacao !== "ganhando" && x.precoAlvo != null && x.precoAlvo <= x.preco * 1.1 + 1e-9).length,
+      },
+    };
+  }
+
+  raiz.MotorDiva = { tarifas, detalhar, precoParaMeta, precoMinimo, comparar, porPeso, canal, analisarCarteira, situacaoDaMargem, FAIXAS };
+})(globalThis);
+</script>
+<script>/*
+ * Divadoecom · Leitura de planilhas (CSV e XLSX)
+ * ----------------------------------------------
+ * Só lê e organiza: não faz contas e não mexe na tela. Roda no navegador e no Node (testes).
+ * Nada é enviado para lugar nenhum: o arquivo é lido dentro do próprio aparelho.
+ *
+ * Fluxo: lerArquivo() → tabela (linhas × colunas) → organizar() → registros
+ *   { sku, titulo, preco, custo, pesoKg, canal, canalTexto, idAnuncio }.
+ * Planilhas só com custo (ex.: produtos do armazém do UpSeller) entram em custosPorSku()
+ * e são juntadas aos anúncios pelo SKU com juntarCustos(). A planilha de kits do UpSeller
+ * (KIT SKU + SKU de Produto + quantidade) vira o custo de cada kit com custosDeKits().
+ */
+(function (raiz) {
+  const T = raiz.TaxasDiva;
+
+  /** Minúsculas, sem acento, espaços simples. */
+  const normal = (s) => String(s ?? "").normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/\s+/g, " ").trim();
+
+  /**
+   * Número escrito no padrão brasileiro ou americano: "1.299,90", "1299.9", "R$ 49,90", "12%".
+   * "1.299" é ambíguo: no CSV brasileiro vale mil duzentos e noventa e nove; com `pontoDecimal`
+   * (texto dentro de .xlsx, como o UpSeller grava: "7.575") vale 7,575.
+   */
+  function numero(v, pontoDecimal = false) {
+    if (typeof v === "number") return Number.isFinite(v) ? v : null;
+    let s = String(v ?? "").trim().replace(/\s|R\$|%/gi, "");
+    if (!s) return null;
+    const virgula = s.lastIndexOf(","), ponto = s.lastIndexOf(".");
+    if (virgula > -1 && ponto > -1) {
+      s = virgula > ponto ? s.replace(/\./g, "").replace(",", ".") : s.replace(/,/g, "");
+    } else if (virgula > -1) {
+      s = s.replace(",", ".");
+    } else if (!pontoDecimal && /^-?\d{1,3}(\.\d{3})+$/.test(s)) {
+      s = s.replace(/\./g, ""); // "1.299" = mil duzentos e noventa e nove
+    }
+    const n = Number(s);
+    return Number.isFinite(n) ? n : null;
+  }
+
+  // ---------- CSV ----------
+  /** Lê CSV separado por ";" ou "," (detecta pelo cabeçalho), com aspas e quebras de linha dentro de aspas. */
+  function lerCSV(texto) {
+    texto = String(texto).replace(/^﻿/, "");
+    const primeira = texto.split(/\r?\n/, 1)[0] || "";
+    const sep = (primeira.match(/;/g) || []).length >= (primeira.match(/,/g) || []).length ? ";" : (primeira.includes("\t") ? "\t" : ",");
+    const linhas = [];
+    let linha = [], campo = "", aspas = false;
+    for (let i = 0; i < texto.length; i++) {
+      const c = texto[i];
+      if (aspas) {
+        if (c === '"' && texto[i + 1] === '"') { campo += '"'; i++; }
+        else if (c === '"') aspas = false;
+        else campo += c;
+      } else if (c === '"') aspas = true;
+      else if (c === sep) { linha.push(campo); campo = ""; }
+      else if (c === "\n" || c === "\r") {
+        if (c === "\r" && texto[i + 1] === "\n") i++;
+        linha.push(campo); linhas.push(linha); linha = []; campo = "";
+      } else campo += c;
+    }
+    if (campo !== "" || linha.length) { linha.push(campo); linhas.push(linha); }
+    return linhas.filter((l) => l.some((x) => String(x).trim() !== ""));
+  }
+
+  // ---------- XLSX (zip + XML), sem biblioteca de fora ----------
+  async function descompactar(bytes) {
+    const fluxo = new Blob([bytes]).stream().pipeThrough(new DecompressionStream("deflate-raw"));
+    return new Uint8Array(await new Response(fluxo).arrayBuffer());
+  }
+
+  /** Lista os arquivos de um zip: { nome → () => Promise<Uint8Array> }. */
+  function abrirZip(buf) {
+    const b = new Uint8Array(buf), d = new DataView(b.buffer, b.byteOffset, b.byteLength);
+    let fim = -1;
+    for (let i = b.length - 22; i >= Math.max(0, b.length - 66000); i--) if (d.getUint32(i, true) === 0x06054b50) { fim = i; break; }
+    if (fim < 0) throw new Error("O arquivo não é uma planilha .xlsx válida.");
+    const total = d.getUint16(fim + 10, true);
+    let p = d.getUint32(fim + 16, true);
+    const arquivos = {};
+    const dec = new TextDecoder();
+    for (let k = 0; k < total; k++) {
+      if (d.getUint32(p, true) !== 0x02014b50) break;
+      const metodo = d.getUint16(p + 10, true), tamanho = d.getUint32(p + 20, true);
+      const nLen = d.getUint16(p + 28, true), eLen = d.getUint16(p + 30, true), cLen = d.getUint16(p + 32, true);
+      const local = d.getUint32(p + 42, true);
+      const nome = dec.decode(b.subarray(p + 46, p + 46 + nLen));
+      arquivos[nome] = async () => {
+        const ini = local + 30 + d.getUint16(local + 26, true) + d.getUint16(local + 28, true);
+        const dados = b.subarray(ini, ini + tamanho);
+        if (metodo === 0) return dados;
+        if (metodo === 8) return descompactar(dados);
+        throw new Error("Compactação da planilha não suportada.");
+      };
+      p += 46 + nLen + eLen + cLen;
+    }
+    return arquivos;
+  }
+
+  const entidades = (s) => s.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&apos;/g, "'")
+    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n)).replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16))).replace(/&amp;/g, "&");
+  const textoDe = (xml) => entidades([...xml.matchAll(/<t(?:\s[^>]*)?>([\s\S]*?)<\/t>/g)].map((m) => m[1]).join(""));
+  const indiceColuna = (ref) => { let n = 0; for (const ch of ref.replace(/\d+/g, "")) n = n * 26 + (ch.charCodeAt(0) - 64); return n - 1; };
+
+  /** Lê a primeira aba de um .xlsx. Números de verdade voltam como number; o resto como texto. */
+  async function lerXLSX(buf) {
+    const zip = abrirZip(buf);
+    const dec = new TextDecoder();
+    const ler = async (nome) => (zip[nome] ? dec.decode(await zip[nome]()) : "");
+    const compartilhados = [...(await ler("xl/sharedStrings.xml")).matchAll(/<si>([\s\S]*?)<\/si>/g)].map((m) => textoDe(m[1]));
+    // Primeira aba, na ordem do livro.
+    let caminho = "xl/worksheets/sheet1.xml";
+    const livro = await ler("xl/workbook.xml"), rels = await ler("xl/_rels/workbook.xml.rels");
+    const rid = (livro.match(/<sheet\b[^>]*\br:id="([^"]+)"/) || [])[1];
+    if (rid) {
+      const alvo = (rels.match(new RegExp(`<Relationship\\b[^>]*Id="${rid}"[^>]*Target="([^"]+)"`)) || rels.match(new RegExp(`<Relationship\\b[^>]*Target="([^"]+)"[^>]*Id="${rid}"`)) || [])[1];
+      if (alvo) caminho = alvo.startsWith("/") ? alvo.slice(1) : "xl/" + alvo.replace(/^\.\//, "");
+    }
+    const aba = await ler(caminho);
+    if (!aba) throw new Error("Não achei a primeira aba da planilha.");
+    const linhas = [];
+    for (const [, corpo] of aba.matchAll(/<row\b[^>]*>([\s\S]*?)<\/row>/g)) {
+      const linha = [];
+      for (const m of corpo.matchAll(/<c\b([^>]*?)(?:\/>|>([\s\S]*?)<\/c>)/g)) {
+        const attrs = m[1], dentro = m[2] || "";
+        const ref = (attrs.match(/\br="([A-Z]+)\d+"/) || [])[1];
+        const tipo = (attrs.match(/\bt="([^"]+)"/) || [])[1];
+        const v = (dentro.match(/<v>([\s\S]*?)<\/v>/) || [])[1];
+        let valor = "";
+        if (tipo === "s") valor = compartilhados[+v] ?? "";
+        else if (tipo === "inlineStr") valor = textoDe(dentro);
+        else if (tipo === "str" || tipo === "e") valor = entidades(v ?? "");
+        else if (tipo === "b") valor = v === "1" ? "VERDADEIRO" : "FALSO";
+        else if (v !== undefined) { const n = Number(v); valor = Number.isFinite(n) ? n : entidades(v); }
+        linha[ref ? indiceColuna(ref) : linha.length] = valor;
+      }
+      linhas.push(Array.from(linha, (x) => x ?? ""));
+    }
+    const tabela = linhas.filter((l) => l.some((x) => String(x).trim() !== ""));
+    tabela.pontoDecimal = true; // números gravados como texto no .xlsx usam ponto decimal
+    return tabela;
+  }
+
+  /**
+   * Lê um arquivo enviado e devolve [{ nome, tabela }]. Um .zip (como o que o UpSeller exporta)
+   * vira uma tabela para cada .xlsx ou .csv de dentro.
+   */
+  async function lerArquivos(nome, buf) {
+    if (!/\.zip$/i.test(nome)) return [{ nome, tabela: await lerArquivo(nome, buf) }];
+    const zip = abrirZip(buf), saida = [];
+    for (const [interno, abrir] of Object.entries(zip)) {
+      const base = interno.split("/").pop();
+      if (!/\.(xlsx|csv)$/i.test(base) || base.startsWith("._") || interno.includes("__MACOSX")) continue;
+      const bytes = await abrir();
+      saida.push({ nome: base, tabela: await lerArquivo(base, bytes.slice().buffer) });
+    }
+    if (!saida.length) throw new Error("O .zip não tem nenhuma planilha .xlsx ou .csv.");
+    return saida;
+  }
+
+  /** Lê .csv, .txt ou .xlsx a partir do nome e do conteúdo (ArrayBuffer). */
+  async function lerArquivo(nome, buf) {
+    if (/\.xlsx$/i.test(nome)) return lerXLSX(buf);
+    if (/\.xls$/i.test(nome)) throw new Error("Planilhas .xls antigas não são lidas. Salve como .xlsx ou .csv e envie de novo.");
+    let texto = new TextDecoder("utf-8").decode(buf);
+    if (texto.includes("\uFFFD")) texto = new TextDecoder("windows-1252").decode(buf); // CSV salvo pelo Excel antigo
+    return lerCSV(texto);
+  }
+
+  // ---------- Colunas ----------
+  // Nomes reconhecidos em cada campo (sem acento, minúsculas). A ordem dos campos importa:
+  // "preço de custo" tem que virar custo antes de ser confundido com preço.
+  const CAMPOS = [
+    ["custo", ["preco de custo de compra", "preco de custo", "custo de compra", "custo unitario", "custo do produto", "custo", "cost"]],
+    ["precoPromo", ["preco promocional", "preco de promocao", "preco com desconto", "sale price"]],
+    ["preco", ["preco de venda", "preco do anuncio", "preco atual", "preco unitario", "preco (r$)", "preco", "price", "valor de venda"]],
+    ["kitSku", ["kit sku", "sku do kit", "sku kit"]],
+    ["quantidade", ["qtd. sku de produto", "qtd sku de produto", "quantidade no kit", "qtd. no kit", "quantidade", "qtd"]],
+    ["sku", ["sku do produto", "sku principal", "sku da variacao", "sku (variacao)", "sku do anuncio", "seller sku", "codigo sku", "sku", "codigo do produto", "codigo"]],
+    ["titulo", ["titulo do anuncio", "nome do produto", "titulo do produto", "titulo", "nome", "produto", "product name", "descricao"]],
+    ["peso", ["peso bruto", "peso da embalagem", "peso do pacote", "peso", "weight"]],
+    ["canal", ["canais de vendas", "canal de venda", "marketplace", "plataforma", "canal"]],
+    ["loja", ["nome da loja", "loja", "conta"]],
+    ["categoria", ["nome da categoria", "categoria do anuncio", "categoria", "categorias"]],
+    ["tipo", ["tipo de anuncio", "tipo de listagem", "listing type", "tipo do anuncio"]],
+    ["logistica", ["tipo de logistica", "logistica", "tipo de envio", "modalidade de envio", "forma de envio"]],
+    ["idAnuncio", ["id de anuncio", "id do anuncio", "id do item", "item id", "mlb", "id do produto", "codigo do anuncio"]],
+  ];
+  // Colunas que parecem preço ou canal mas não são (cadastro do produto, dado fiscal).
+  const IGNORAR = ["preco de varejo", "preco sugerido", "origem"];
+  const ROTULOS = {
+    sku: "SKU", titulo: "Nome do produto", preco: "Preço de venda", precoPromo: "Preço promocional", custo: "Custo",
+    peso: "Peso", canal: "Canal", tipo: "Tipo de anúncio", logistica: "Logística", idAnuncio: "ID do anúncio",
+    kitSku: "SKU do kit", quantidade: "Quantidade no kit", loja: "Loja", categoria: "Categoria",
+  };
+
+  /** Índice da coluna de cada campo (-1 = não achou). Primeiro nome igual, depois nome que contém. */
+  function detectarColunas(cabecalhos) {
+    const cab = cabecalhos.map(normal);
+    const usado = new Set(cab.map((c, k) => (IGNORAR.includes(c) ? k : -1)).filter((k) => k > -1)), res = {};
+    for (const [campo, nomes] of CAMPOS) {
+      let i = -1;
+      for (const n of nomes) { i = cab.findIndex((c, k) => !usado.has(k) && c === n); if (i > -1) break; }
+      if (i < 0) for (const n of nomes) {
+        if (n.length < 4) continue; // "sku", "mlb": só nome exato... exceto quando é o começo
+        i = cab.findIndex((c, k) => !usado.has(k) && (c.startsWith(n + " ") || c.startsWith(n + "(") || (n.length > 5 && c.includes(n))));
+        if (i > -1) break;
+      }
+      if (i < 0 && (campo === "sku" || campo === "idAnuncio")) i = cab.findIndex((c, k) => !usado.has(k) && /^(sku|mlb)\b/.test(c));
+      res[campo] = i;
+      if (i > -1) usado.add(i);
+    }
+    return res;
+  }
+
+  /** A linha do cabeçalho: a primeira, entre as 15 iniciais, que reconhece mais campos (modelos com instruções no topo). */
+  function acharCabecalho(tabela) {
+    let melhor = 0, pontos = -1;
+    tabela.slice(0, 15).forEach((linha, i) => {
+      const c = detectarColunas(linha.map(String));
+      const p = Object.values(c).filter((x) => x > -1).length;
+      if (p > pontos) { pontos = p; melhor = i; }
+    });
+    return melhor;
+  }
+
+  // ---------- Canal ----------
+  /** Texto do canal (+ tipo de anúncio e logística, quando vierem) → id de canal da calculadora, ou null. */
+  function normalizarCanal(canal, tipo, logistica) {
+    const t = ` ${normal([canal, tipo, logistica].filter(Boolean).join(" "))} `;
+    if (/mercado ?livre|mercadolibre|meli|\bml\b|\bmlb/.test(t)) {
+      const premium = /premium|gold_pro|gold pro/.test(t);
+      const flex = /flex|self_service|self service/.test(t);
+      return `ml-${premium ? "premium" : "classico"}${flex ? "-flex" : ""}`;
+    }
+    if (t.includes("shopee")) return "shopee";
+    if (t.includes("tiktok") || t.includes("tik tok")) return "tiktok";
+    if (t.includes("amazon")) return "amazon";
+    if (t.includes("magalu") || t.includes("magazine luiza")) return "magalu";
+    if (t.includes("shein")) return "shein";
+    return null;
+  }
+
+  // Categoria do marketplace (ex.: "Eletrodomésticos > ... > Escovas") → categoria da calculadora.
+  // Olha primeiro o 1º nível do caminho; se não achar, o caminho inteiro.
+  const PISTAS_CATEGORIA = [
+    ["celulares", /celular|telefone|smartwatch/], ["informatica", /informatica|computador|notebook|impressora/],
+    ["eletrodomesticos", /eletrodomestico|aspirador/], ["eletronicos", /eletronico|audio|video|camera|tv\b|games|console/],
+    ["moda", /moda|roupa|calcado|bolsa|vestuario|joia|relogio/], ["beleza", /beleza|cuidado pessoal|perfum|maquiagem/],
+    ["saude", /saude|suplemento|farmacia/], ["esportes", /esporte|fitness/], ["ferramentas", /ferramenta|construcao/],
+    ["brinquedos", /brinquedo|bebe|hobby/], ["pet", /\bpet\b|animais/], ["papelaria", /papelaria|escritorio|livro/],
+    ["automotivo", /veiculo|automotiv|carro|moto/], ["casa", /casa|moveis|decoracao|limpeza|lavanderia|cozinha|jardim/],
+  ];
+  function normalizarCategoria(texto) {
+    const t = normal(texto);
+    if (!t) return null;
+    for (const alvo of [t.split(">")[0], t]) for (const [id, re] of PISTAS_CATEGORIA) if (re.test(alvo)) return id;
+    return null;
+  }
+
+  /** Peso em kg; colunas em gramas (ou valores grandes demais para kg) são convertidas. */
+  function pesoEmKg(valor, cabecalho, pontoDecimal = false) {
+    const n = numero(valor, pontoDecimal);
+    if (n == null) return null;
+    const c = normal(cabecalho);
+    if (/\(g\)|gramas|\bg\b|\(gr\)/.test(c)) return n / 1000;
+    if (/kg/.test(c)) return n;
+    return n > 30 ? n / 1000 : n;
+  }
+
+  /**
+   * Organiza uma tabela lida em registros. `colunas` pode vir da tela (escolha manual);
+   * sem ela, usa detectarColunas. `canalPadrao` vale para linhas sem canal reconhecido.
+   */
+  function organizar(tabela, opcoes = {}) {
+    const ini = opcoes.linhaCabecalho ?? acharCabecalho(tabela);
+    const cabecalhos = (tabela[ini] || []).map((x) => String(x).trim());
+    const col = opcoes.colunas || detectarColunas(cabecalhos);
+    const pega = (linha, campo) => (col[campo] > -1 ? linha[col[campo]] : "");
+    const num = (v) => numero(v, !!tabela.pontoDecimal);
+    const registros = [];
+    for (const linha of tabela.slice(ini + 1)) {
+      const sku = String(pega(linha, "sku") ?? "").trim();
+      const titulo = String(pega(linha, "titulo") ?? "").trim();
+      if (!sku && !titulo) continue;
+      const promo = num(pega(linha, "precoPromo"));
+      const preco = promo && promo > 0 ? promo : num(pega(linha, "preco"));
+      const canalTexto = [pega(linha, "loja"), pega(linha, "canal"), pega(linha, "tipo"), pega(linha, "logistica")].map((x) => String(x ?? "").trim()).filter(Boolean).join(" · ");
+      registros.push({
+        sku, titulo,
+        preco: preco && preco > 0 ? preco : null,
+        custo: num(pega(linha, "custo")),
+        pesoKg: col.peso > -1 ? pesoEmKg(pega(linha, "peso"), cabecalhos[col.peso], !!tabela.pontoDecimal) : null,
+        canal: normalizarCanal(pega(linha, "canal"), pega(linha, "tipo"), pega(linha, "logistica")) || opcoes.canalPadrao || null,
+        canalTexto,
+        categoria: normalizarCategoria(pega(linha, "categoria")),
+        idAnuncio: String(pega(linha, "idAnuncio") ?? "").trim(),
+      });
+    }
+    const kits = col.kitSku > -1 && col.sku > -1;
+    if (kits) {
+      // Uma linha por item do kit; quando o SKU do kit vem só na primeira linha, vale para as seguintes.
+      let atual = "";
+      registros.length = 0;
+      for (const linha of tabela.slice(ini + 1)) {
+        atual = String(linha[col.kitSku] ?? "").trim() || atual;
+        const item = String(linha[col.sku] ?? "").trim();
+        if (!atual || !item) continue;
+        registros.push({ kitSku: atual, sku: item, quantidade: num(pega(linha, "quantidade")) || 1, titulo: String(pega(linha, "titulo") ?? "").trim() });
+      }
+    }
+    const tipo = kits ? "kits" : col.preco > -1 || col.precoPromo > -1 ? "anuncios" : col.custo > -1 ? "custos" : "desconhecida";
+    return { cabecalhos, colunas: col, linhaCabecalho: ini, tipo, registros };
+  }
+
+  /** Mapa SKU → { custo, pesoKg, titulo } a partir de uma planilha de produtos (ex.: armazém do UpSeller). */
+  function custosPorSku(registros) {
+    const mapa = {};
+    for (const r of registros) if (r.sku && (r.custo != null || r.pesoKg != null)) mapa[normal(r.sku)] = { custo: r.custo, pesoKg: r.pesoKg, titulo: r.titulo };
+    return mapa;
+  }
+
+  /**
+   * Custo e peso de cada kit = soma dos itens × quantidade. Só entra o kit em que todos os itens têm custo.
+   * `itens`: registros de uma planilha de kits; `mapa`: resultado de custosPorSku().
+   */
+  function custosDeKits(itens, mapa) {
+    const kits = {};
+    for (const r of itens) (kits[normal(r.kitSku)] ||= { titulo: r.titulo, itens: [] }).itens.push(r);
+    const saida = {};
+    for (const [sku, kit] of Object.entries(kits)) {
+      let custo = 0, peso = 0, pesoCompleto = true, completo = true;
+      for (const it of kit.itens) {
+        const c = mapa[normal(it.sku)];
+        if (!c || c.custo == null) { completo = false; break; }
+        custo += c.custo * it.quantidade;
+        if (c.pesoKg != null) peso += c.pesoKg * it.quantidade; else pesoCompleto = false;
+      }
+      if (completo) saida[sku] = { custo: Math.round(custo * 100) / 100, pesoKg: pesoCompleto ? peso : null, titulo: kit.titulo };
+    }
+    return saida;
+  }
+
+  /** Completa custo, peso e nome dos anúncios com o mapa de custos (o que veio no próprio anúncio tem prioridade). */
+  function juntarCustos(anuncios, mapa) {
+    return anuncios.map((a) => {
+      const c = mapa[normal(a.sku)];
+      if (!c) return a;
+      return { ...a, custo: a.custo ?? c.custo, pesoKg: a.pesoKg ?? c.pesoKg, titulo: a.titulo || c.titulo || "" };
+    });
+  }
+
+  const nomesCanais = () => T.CANAIS.map((c) => [c.id, c.nome]);
+
+  raiz.PlanilhaDiva = { numero, lerCSV, lerXLSX, lerArquivo, lerArquivos, custosDeKits, normalizarCategoria, detectarColunas, acharCabecalho, normalizarCanal, pesoEmKg, organizar, custosPorSku, juntarCustos, ROTULOS, nomesCanais, normal };
+})(globalThis);
+</script>
+<script>/*
+ * Divadoecom · Cofre com senha
+ * ----------------------------
+ * Guarda os produtos importados criptografados com uma senha, usando a criptografia
+ * do próprio navegador (Web Crypto): a chave sai da senha por PBKDF2 e os dados vão em AES-GCM.
+ * Sem a senha, o que fica guardado no aparelho é ilegível. Não existe recuperação de senha.
+ * Não faz contas e não mexe na tela. Roda no navegador e no Node (testes).
+ */
+(function (raiz) {
+  const ITERACOES = 210000;
+  const cripto = () => raiz.crypto && raiz.crypto.subtle;
+
+  const paraBase64 = (bytes) => {
+    let s = "";
+    for (let i = 0; i < bytes.length; i += 0x8000) s += String.fromCharCode(...bytes.subarray(i, i + 0x8000));
+    return btoa(s);
+  };
+  const deBase64 = (txt) => Uint8Array.from(atob(txt), (c) => c.charCodeAt(0));
+
+  async function chave(senha, sal, iteracoes) {
+    const base = await cripto().importKey("raw", new TextEncoder().encode(senha), "PBKDF2", false, ["deriveKey"]);
+    return cripto().deriveKey({ name: "PBKDF2", salt: sal, iterations: iteracoes, hash: "SHA-256" }, base, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]);
+  }
+
+  /** Funciona neste navegador? (precisa de página https ou arquivo local num navegador atual) */
+  const disponivel = () => !!cripto();
+
+  /** Criptografa qualquer dado (vira JSON) com a senha. Devolve um texto para guardar. */
+  async function trancar(dados, senha) {
+    if (!senha) throw new Error("Crie uma senha.");
+    const sal = raiz.crypto.getRandomValues(new Uint8Array(16));
+    const iv = raiz.crypto.getRandomValues(new Uint8Array(12));
+    const k = await chave(senha, sal, ITERACOES);
+    const cifrado = new Uint8Array(await cripto().encrypt({ name: "AES-GCM", iv }, k, new TextEncoder().encode(JSON.stringify(dados))));
+    return JSON.stringify({ v: 1, it: ITERACOES, sal: paraBase64(sal), iv: paraBase64(iv), dados: paraBase64(cifrado) });
+  }
+
+  /** Abre o texto guardado com a senha. Senha errada → erro "Senha errada." */
+  async function abrir(pacote, senha) {
+    const p = JSON.parse(pacote);
+    const k = await chave(senha, deBase64(p.sal), p.it || ITERACOES);
+    try {
+      const claro = await cripto().decrypt({ name: "AES-GCM", iv: deBase64(p.iv) }, k, deBase64(p.dados));
+      return JSON.parse(new TextDecoder().decode(claro));
+    } catch (_) {
+      throw new Error("Senha errada.");
+    }
+  }
+
+  raiz.CofreDiva = { disponivel, trancar, abrir };
 })(globalThis);
 </script>
 <script>
@@ -969,7 +1526,7 @@ const CONFIG = {
     };
   }
 
-  const faixa = (m) => (m == null ? "ruim" : m >= 0.12 ? "bom" : m >= 0.05 ? "atencao" : "ruim");
+  const faixa = (m) => ({ ganhando: "bom", limite: "atencao", perdendo: "ruim" })[M.situacaoDaMargem(m)];
 
   // ---------- Desenho ----------
   function fatias(r) {
@@ -1207,6 +1764,7 @@ const CONFIG = {
   const CAMPOS = ["custo", "extras", "categoria", "peso", "tamanho", "imposto", "preco", "meta", "desconto", "cupom", "flex-entrega", "flex-bonus"];
   const MARCADOS = ["cpf-alto", "amazon-parcelamento", "tiktok-frete", "flex-ligado"];
   function guardar() {
+    if (estado.naoGuardar) return; // números abertos de "Meus produtos" não ficam na memória da calculadora
     try {
       const dados = { estado: { modo: estado.modo, metaTipo: estado.metaTipo, ordem: estado.ordem, canais: [...estado.canais], shopeeConta: estado.shopeeConta, amazonPlano: estado.amazonPlano, exemplo: estado.exemplo }, campos: {}, marcados: {} };
       for (const c of CAMPOS) dados.campos[c] = $(c).value;
@@ -1265,7 +1823,7 @@ const CONFIG = {
   document.querySelectorAll("[data-amazon]").forEach((b) => (b.onclick = () => { estado.amazonPlano = b.dataset.amazon; atualizar(); }));
   document.querySelectorAll("[data-ordem]").forEach((b) => (b.onclick = () => { estado.ordem = b.dataset.ordem; atualizar(); }));
   $("ficha").addEventListener("input", (ev) => {
-    if (ev.target.matches("input:not([type=checkbox]), select")) estado.exemplo = false;
+    if (ev.target.matches("input:not([type=checkbox]), select")) { estado.exemplo = false; estado.naoGuardar = false; }
     atualizar();
   });
   $("ficha").addEventListener("submit", (ev) => ev.preventDefault());
@@ -1283,6 +1841,414 @@ const CONFIG = {
     try { await navigator.clipboard.writeText(texto); avisar("Resumo copiado"); $("copiar-texto").hidden = true; }
     catch (_) { const t = $("copiar-texto"); t.value = texto; t.hidden = false; t.focus(); t.select(); avisar("Selecione e copie o texto abaixo"); }
   };
+
+  // =====================================================================
+  // ---------- Meus produtos: planilha → carteira, guardada com senha ----------
+  // Os produtos nunca saem do aparelho. Guardados só criptografados (CofreDiva),
+  // e a aba tranca sozinha. Quem abre a calculadora em outro aparelho vê a aba vazia.
+  // =====================================================================
+  const P = window.PlanilhaDiva, Cofre = window.CofreDiva;
+  const CHAVE_COFRE = "divadoecom-produtos-v1";
+  const TRANCA_EM_MS = 10 * 60 * 1000;
+  const PR = { dados: null, senha: null, guardar: true, pendentes: null, aguardandoSenha: null, erro: "", apagando: false,
+    filtro: "todos", busca: "", ordem: "margem", limite: 150, analise: null, timer: null };
+  const VP = $("vista-produtos");
+  const temCofre = () => { try { return !!localStorage.getItem(CHAVE_COFRE); } catch (_) { return false; } };
+  const SITUACAO = {
+    ganhando: ["Ganhando", "bom"], limite: ["No limite", "atencao"], perdendo: ["Perdendo", "ruim"],
+    "sem-custo": ["Falta o custo", "info"], "sem-preco": ["Falta o preço", "info"], "sem-canal": ["Canal não reconhecido", "info"],
+  };
+  const pendente = (s) => s.startsWith("sem-");
+  const iconeCadeado = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>`;
+
+  function mostrarVista(qual) {
+    const produtos = qual === "produtos";
+    if (!produtos && PR.dados && PR.guardar) trancar(); // sair da aba tranca (os dados continuam guardados)
+    $("vista-calculadora").hidden = produtos;
+    VP.hidden = !produtos;
+    document.querySelector(".modos").hidden = produtos;
+    $("aba-calculadora").setAttribute("aria-selected", !produtos);
+    $("aba-produtos").setAttribute("aria-selected", produtos);
+    if (produtos) desenharProdutos();
+    window.scrollTo(0, 0);
+  }
+
+  function trancar() {
+    clearTimeout(PR.timer);
+    Object.assign(PR, { dados: null, senha: null, pendentes: null, aguardandoSenha: null, analise: null, erro: "", apagando: false, busca: "", limite: 150 });
+    if (!VP.hidden) desenharProdutos();
+  }
+  function vigiar() {
+    clearTimeout(PR.timer);
+    if (PR.dados) PR.timer = setTimeout(() => { trancar(); avisar("Meus produtos trancado por inatividade"); }, TRANCA_EM_MS);
+  }
+  ["pointerdown", "keydown", "input"].forEach((t) => VP.addEventListener(t, vigiar, { passive: true }));
+  addEventListener("pagehide", () => { if (PR.dados) trancar(); });
+
+  async function salvar() {
+    if (!PR.guardar || !PR.senha || !PR.dados) return;
+    try { localStorage.setItem(CHAVE_COFRE, await Cofre.trancar(PR.dados, PR.senha)); }
+    catch (_) { avisar("Não deu para guardar neste navegador"); }
+  }
+  let salvarDepois = null;
+  const salvarEmBreve = () => { clearTimeout(salvarDepois); salvarDepois = setTimeout(salvar, 600); };
+
+  function apagarTudo() {
+    try { localStorage.removeItem(CHAVE_COFRE); } catch (_) { /* nada guardado */ }
+    trancar();
+    avisar("Produtos apagados deste aparelho");
+  }
+
+  // ---------- Telas ----------
+  function desenharProdutos() {
+    if (PR.aguardandoSenha) return telaCriarSenha();
+    if (PR.pendentes) return telaColunas();
+    if (PR.dados) return desenharPainel();
+    if (temCofre()) return telaSenha();
+    return telaImportar();
+  }
+
+  const cartao = (html) => `<section class="vidro p-cartao p-centro">${html}</section>`;
+  const erroHtml = () => (PR.erro ? `<p class="p-erro" role="alert">${esc(PR.erro)}</p>` : "");
+
+  function telaImportar() {
+    const semCripto = !Cofre.disponivel();
+    VP.innerHTML = cartao(`
+      <span class="coroa">${iconeCadeado} Só você vê</span>
+      <h1>Veja todos os seus produtos</h1>
+      <p>Envie a planilha de anúncios e a de custos do UpSeller (ou de outro sistema). A calculadora mostra quais produtos estão ganhando, quais estão no limite e quais estão perdendo dinheiro.</p>
+      <label class="soltar" id="p-soltar" for="p-arquivo">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4M7 9l5-5 5 5"/><path d="M4 16v3a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-3"/></svg>
+        <b>Escolher planilhas</b><small>.zip do UpSeller, .xlsx ou .csv · pode enviar mais de uma</small>
+      </label>
+      <input type="file" id="p-arquivo" accept=".zip,.xlsx,.csv,.txt" multiple hidden>
+      ${erroHtml()}
+      <label class="marcar"><input type="checkbox" id="p-nao-guardar"${PR.guardar && !semCripto ? "" : " checked"}${semCripto ? " disabled" : ""}> Não guardar neste aparelho (os produtos somem ao fechar)</label>
+      <p class="p-nota">A planilha é lida aqui no seu aparelho. Nada é enviado para a internet. Para guardar, você cria uma senha e os produtos ficam criptografados.</p>`);
+    if (semCripto) PR.guardar = false;
+  }
+
+  function telaSenha() {
+    VP.innerHTML = cartao(`
+      <span class="coroa">${iconeCadeado} Trancado</span>
+      <h1>Digite a sua senha</h1>
+      <p>Seus produtos estão guardados com senha neste aparelho.</p>
+      <form id="p-form-senha" class="p-form">
+        <div class="campo"><label for="p-senha">Senha</label>
+          <div class="entrada"><input id="p-senha" type="password" autocomplete="current-password" required></div></div>
+        ${erroHtml()}
+        <button type="submit" class="botao-forte">Abrir meus produtos</button>
+      </form>
+      ${PR.apagando
+        ? `<div class="p-confirma" role="alert"><p><b>Apagar os produtos guardados neste aparelho?</b> Não dá para desfazer. Depois é só importar as planilhas de novo.</p>
+           <div class="p-linha-botoes"><button type="button" class="botao p-perigo" data-p="apagar-sim">Apagar</button><button type="button" class="botao" data-p="apagar-nao">Cancelar</button></div></div>`
+        : `<button type="button" class="limpar" data-p="apagar">Esqueci a senha</button>`}`);
+    $("p-senha")?.focus();
+  }
+
+  function telaCriarSenha() {
+    VP.innerHTML = cartao(`
+      <span class="coroa">${iconeCadeado} Proteja seus produtos</span>
+      <h1>Crie uma senha</h1>
+      <p>Ela tranca os seus produtos neste aparelho. Quem usar a calculadora aqui (mesmo da família) não vai ver nada sem a senha.</p>
+      <form id="p-form-criar" class="p-form">
+        <div class="campos">
+          <div class="campo"><label for="p-nova">Senha (mínimo 6 caracteres)</label>
+            <div class="entrada"><input id="p-nova" type="password" autocomplete="new-password" minlength="6" required></div></div>
+          <div class="campo"><label for="p-repete">Repita a senha</label>
+            <div class="entrada"><input id="p-repete" type="password" autocomplete="new-password" required></div></div>
+        </div>
+        <p class="p-nota"><b>Guarde essa senha.</b> Não existe recuperação: se esquecer, o jeito é apagar e importar as planilhas de novo.</p>
+        ${erroHtml()}
+        <button type="submit" class="botao-forte">Guardar com senha</button>
+      </form>`);
+    $("p-nova").focus();
+  }
+
+  const opcoesColuna = (arq, campo) => [`<option value="-1">— não tem —</option>`]
+    .concat(arq.org.cabecalhos.map((c, i) => `<option value="${i}"${arq.org.colunas[campo] === i ? " selected" : ""}>${esc(c || `Coluna ${i + 1}`)}</option>`)).join("");
+
+  function telaColunas() {
+    const tipos = { anuncios: ["Anúncios (tem preço)", "bom"], custos: ["Custos (sem preço)", "info"], kits: ["Kits (custo somado dos itens)", "info"], desconhecida: ["Não reconhecida", "atencao"] };
+    const camposDe = (tipo) => (tipo === "kits" ? ["kitSku", "sku", "quantidade", "titulo"] : ["sku", "titulo", "preco", "precoPromo", "custo", "peso", "canal", "tipo", "logistica", "loja", "categoria"]);
+    VP.innerHTML = cartao(`
+      <span class="coroa">Confira as colunas</span>
+      <h1>Achei ${PR.pendentes.length > 1 ? `${PR.pendentes.length} planilhas` : "1 planilha"}</h1>
+      <p>Confira se cada informação está na coluna certa. Planilhas de custo são juntadas aos anúncios pelo SKU.</p>
+      ${PR.pendentes.map((arq, k) => {
+        const r = arq.org.registros;
+        const semCanal = arq.org.tipo === "anuncios" ? r.filter((x) => !x.canal).length : 0;
+        const campos = camposDe(arq.org.tipo);
+        const kit = arq.org.tipo === "kits";
+        return `<div class="p-arquivo">
+          <div class="p-arquivo-topo"><b>${esc(arq.nome)}</b><span class="chip ${tipos[arq.org.tipo][1]}">${tipos[arq.org.tipo][0]}</span></div>
+          <p class="p-nota">${kit ? `${new Set(r.map((x) => x.kitSku)).size} kits · ${r.length} itens. O custo de cada kit é a soma dos itens × quantidade.`
+            : `${r.length} linhas · ${r.filter((x) => x.preco).length} com preço · ${r.filter((x) => x.custo != null).length} com custo${semCanal ? ` · <b class="p-alerta">${semCanal} sem canal</b>` : ""}`}</p>
+          <div class="p-mapa">${campos.map((c) => `<div class="campo"><label for="p-col-${k}-${c}">${P.ROTULOS[c]}</label>
+            <div class="entrada"><select id="p-col-${k}-${c}" data-arq="${k}" data-campo="${c}">${opcoesColuna(arq, c)}</select></div></div>`).join("")}
+            ${kit ? "" : `<div class="campo"><label for="p-canal-${k}">Canal desta planilha</label>
+              <div class="entrada"><select id="p-canal-${k}" data-arq="${k}" data-canal-padrao>
+                <option value="">Ler da coluna Canal</option>${T.CANAIS.map((c) => `<option value="${c.id}"${arq.canalPadrao === c.id ? " selected" : ""}>${esc(c.nome)}</option>`).join("")}
+              </select></div></div>`}
+          </div></div>`;
+      }).join("")}
+      ${erroHtml()}
+      <div class="p-linha-botoes"><button type="button" class="botao-forte" data-p="analisar">Ver meus produtos</button>
+        <button type="button" class="botao" data-p="cancelar-importacao">Cancelar</button></div>`);
+  }
+
+  async function lerArquivos(lista) {
+    PR.erro = "";
+    const lidos = [];
+    for (const f of lista) {
+      try {
+        for (const { nome, tabela } of await P.lerArquivos(f.name, await f.arrayBuffer())) {
+          if (!tabela.length) throw new Error(`${nome} está vazia.`);
+          lidos.push({ nome, tabela, canalPadrao: "", org: P.organizar(tabela) });
+        }
+      } catch (e) { PR.erro = `${f.name}: ${e.message}`; }
+    }
+    if (lidos.length) PR.pendentes = (PR.pendentes || []).concat(lidos);
+    desenharProdutos();
+  }
+
+  function reorganizar(k) {
+    const arq = PR.pendentes[k];
+    arq.org = P.organizar(arq.tabela, { linhaCabecalho: arq.org.linhaCabecalho, colunas: arq.org.colunas, canalPadrao: arq.canalPadrao || null });
+  }
+
+  function analisarImportacao() {
+    const anuncios = [], custos = {}, itensDeKits = [];
+    for (const arq of PR.pendentes) {
+      if (arq.org.tipo === "anuncios") anuncios.push(...arq.org.registros);
+      if (arq.org.tipo === "custos") Object.assign(custos, P.custosPorSku(arq.org.registros));
+      if (arq.org.tipo === "kits") itensDeKits.push(...arq.org.registros);
+    }
+    Object.assign(custos, P.custosDeKits(itensDeKits, custos));
+    if (!anuncios.length) {
+      PR.erro = Object.keys(custos).length
+        ? `Os custos de ${Object.keys(custos).length} produtos e kits foram lidos. Agora envie também a planilha de anúncios (com o preço de venda de cada canal) junto com esta.`
+        : "Nenhuma planilha tem preço de venda. Envie também a planilha de anúncios, ou escolha a coluna de preço.";
+      return telaColunas();
+    }
+    let produtos = P.juntarCustos(anuncios, custos)
+      .map(({ sku, titulo, preco, custo, pesoKg, canal, canalTexto, categoria, idAnuncio }) => ({ sku, titulo, preco, custo, pesoKg, canal, canalTexto, categoria, idAnuncio }));
+    // Ao importar de novo, mantém os custos que você digitou à mão.
+    if (PR.dados) {
+      const antigos = {};
+      for (const p of PR.dados.produtos) if (p.custo != null) antigos[`${P.normal(p.sku)}|${p.canal}`] = p.custo;
+      produtos = produtos.map((p) => (p.custo == null && antigos[`${P.normal(p.sku)}|${p.canal}`] != null ? { ...p, custo: antigos[`${P.normal(p.sku)}|${p.canal}`] } : p));
+    }
+    const ajustes = PR.dados?.ajustes || { imposto: $("imposto").value || "6", categoria: $("categoria").value, peso: $("peso").value || "0,5", flexEntrega: $("flex-entrega").value || "12,00" };
+    const dados = { versao: 1, produtos, ajustes };
+    PR.pendentes = null; PR.erro = "";
+    if (PR.guardar && !PR.senha) { PR.aguardandoSenha = dados; return telaCriarSenha(); }
+    PR.dados = dados; salvar(); vigiar(); desenharPainel();
+  }
+
+  // ---------- Painel ----------
+  function baseProdutos() {
+    const a = PR.dados.ajustes;
+    return { ...entrada(), impostoPct: num(a.imposto) / 100, categoria: a.categoria, pesoKg: num(a.peso), tamanho: "envelope",
+      flexEntrega: num(a.flexEntrega), descontoPct: 0, cupomPct: 0 };
+  }
+
+  function desenharPainel() {
+    const a = PR.dados.ajustes;
+    VP.innerHTML = `
+      <section class="vidro p-cartao">
+        <div class="p-cabeca">
+          <div><span class="coroa">${iconeCadeado} ${PR.guardar ? "Guardado com senha neste aparelho" : "Só nesta janela: some ao fechar"}</span>
+            <h1>Meus produtos</h1></div>
+          <div class="p-linha-botoes">
+            <label class="botao" for="p-arquivo">Importar de novo</label><input type="file" id="p-arquivo" accept=".zip,.xlsx,.csv,.txt" multiple hidden>
+            <button type="button" class="botao" data-p="trancar">${iconeCadeado} ${PR.guardar ? "Trancar agora" : "Fechar e apagar"}</button>
+          </div>
+        </div>
+        <div class="p-ajustes">
+          <div class="campo"><label for="p-imposto">Imposto</label><div class="entrada"><input id="p-imposto" data-aj="imposto" inputmode="decimal" value="${esc(a.imposto)}"><span class="depois">%</span></div></div>
+          <div class="campo"><label for="p-categoria">Categoria quando faltar</label><div class="entrada"><select id="p-categoria" data-aj="categoria">${T.CATEGORIAS.map(([id, n]) => `<option value="${id}"${a.categoria === id ? " selected" : ""}>${esc(n)}</option>`).join("")}</select></div></div>
+          <div class="campo"><label for="p-peso">Peso quando faltar</label><div class="entrada"><input id="p-peso" data-aj="peso" inputmode="decimal" value="${esc(a.peso)}"><span class="depois">kg</span></div></div>
+          <div class="campo"><label for="p-flex">Entrega Flex</label><div class="entrada"><span>R$</span><input id="p-flex" data-aj="flexEntrega" inputmode="decimal" value="${esc(a.flexEntrega)}"></div></div>
+        </div>
+        <div class="p-resumo" id="p-resumo" role="group" aria-label="Filtrar por situação"></div>
+      </section>
+      <section class="insights vidro" aria-labelledby="p-titulo-insights">
+        <header><span class="radar" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12 18.5 5.5"/></svg></span>
+          <div><h2 id="p-titulo-insights">Insights da sua carteira</h2><p>Resumo para decidir mais rápido</p></div></header>
+        <ul class="lista-insights" id="p-insights"></ul>
+      </section>
+      <section class="vidro p-cartao">
+        <div class="p-ferramentas">
+          <div class="entrada p-busca"><input id="p-busca" type="search" placeholder="Buscar por nome ou SKU" aria-label="Buscar produto" value="${esc(PR.busca)}"></div>
+          <div class="entrada"><select id="p-ordem" aria-label="Ordenar">
+            ${[["margem", "Menor margem primeiro"], ["lucro", "Menor lucro primeiro"], ["lucro-maior", "Maior lucro primeiro"], ["nome", "Nome"], ["canal", "Canal"]]
+              .map(([v, n]) => `<option value="${v}"${PR.ordem === v ? " selected" : ""}>${n}</option>`).join("")}</select></div>
+        </div>
+        <div id="p-lista"></div>
+      </section>
+      <button type="button" class="limpar" data-p="apagar-painel">Apagar meus produtos deste aparelho</button>
+      <div id="p-confirma-painel"></div>`;
+    recalcular();
+  }
+
+  function recalcular() {
+    PR.analise = M.analisarCarteira(PR.dados.produtos, baseProdutos());
+    desenharResumo(); desenharInsightsCarteira(); desenharLista();
+  }
+
+  function desenharResumo() {
+    const r = PR.analise.resumo;
+    const faltam = r.semCusto + r.semPreco + r.semCanal;
+    const botoes = [["todos", "Todos", r.total, "holo"], ["perdendo", "Perdendo", r.perdendo, "ruim"], ["limite", "No limite", r.limite, "atencao"], ["ganhando", "Ganhando", r.ganhando, "bom"], ["pendentes", "Faltam dados", faltam, "info"]];
+    $("p-resumo").innerHTML = botoes.map(([id, nome, n, cor]) =>
+      `<button type="button" class="p-num ${cor}" data-filtro="${id}" aria-pressed="${PR.filtro === id}"><small>${nome}</small><b>${n}</b></button>`).join("");
+  }
+
+  function desenharInsightsCarteira() {
+    const r = PR.analise.resumo, itens = [];
+    const nomeCanal = (id) => infoCanal(id)?.nome || id;
+    const comLucro = r.ganhando + r.limite + r.perdendo;
+    if (r.perdendo) itens.push(["ruim", `${r.perdendo} ${r.perdendo > 1 ? "produtos perdendo" : "produto perdendo"} dinheiro`,
+      `Os que mais perdem: ${r.piores.slice(0, 3).map((x) => `<b>${esc(x.titulo || x.sku)}</b> (${R(x.lucro)})`).join(", ")}.`]);
+    else if (comLucro) itens.push(["bom", "Nenhum produto perdendo", "Todos os produtos com custo ficam com 5% de margem ou mais."]);
+    if (r.canalMaisPerdendo) itens.push(["atencao", `${nomeCanal(r.canalMaisPerdendo.canal)} concentra as perdas`, `É o canal com mais produtos perdendo: <b>${r.canalMaisPerdendo.quantos}</b>. Revise o preço ou o custo de envio nele.`]);
+    if (r.alcancaCom10) itens.push(["info", "Ajuste pequeno resolve", `<b>${r.alcancaCom10}</b> ${r.alcancaCom10 > 1 ? "produtos chegam" : "produto chega"} a 12% de margem subindo o preço em até 10%. Use a coluna “Preço p/ 12%”.`]);
+    if (comLucro) itens.push([r.lucroTotal >= 0 ? "bom" : "ruim", "Lucro da carteira", `Vendendo 1 unidade de cada produto com custo, sobram <b>${R(r.lucroTotal)}</b>.`]);
+    if (r.semCusto) {
+      const semSku = PR.analise.itens.filter((x) => x.situacao === "sem-custo" && !x.sku).length;
+      const comSku = r.semCusto - semSku;
+      if (semSku) itens.push(["atencao", `${semSku} ${semSku > 1 ? "anúncios" : "anúncio"} sem SKU`, "Sem SKU não dá para achar o custo. Cadastre o SKU no anúncio (ou vincule o anúncio ao produto no UpSeller), ou digite o custo na tabela."]);
+      if (comSku) itens.push(["atencao", `${comSku} com SKU, mas sem custo`, "O SKU não tem Custo de Compra no UpSeller (ou é um kit com algum item sem custo). Preencha no UpSeller e importe de novo, ou digite na tabela."]);
+    }
+    if (r.semCanal) itens.push(["atencao", `${r.semCanal} sem canal reconhecido`, "Importe de novo e escolha o “Canal desta planilha”."]);
+    $("p-insights").innerHTML = itens.slice(0, 6).map(([sinal, titulo, texto]) =>
+      `<li><i class="sinal ${sinal}" aria-hidden="true"></i><div><strong>${esc(titulo)}</strong>${texto}</div></li>`).join("");
+  }
+
+  function desenharLista() {
+    const busca = P.normal(PR.busca);
+    let itens = PR.analise.itens.filter((x) => {
+      if (PR.filtro === "pendentes" ? !pendente(x.situacao) : PR.filtro !== "todos" && x.situacao !== PR.filtro) return false;
+      return !busca || P.normal(`${x.titulo} ${x.sku} ${x.idAnuncio}`).includes(busca);
+    });
+    const semNum = (v) => (v == null ? Infinity : v);
+    const ord = {
+      margem: (a, b) => semNum(a.margem) - semNum(b.margem), lucro: (a, b) => semNum(a.lucro) - semNum(b.lucro),
+      "lucro-maior": (a, b) => (b.lucro ?? -Infinity) - (a.lucro ?? -Infinity),
+      nome: (a, b) => String(a.titulo || a.sku).localeCompare(String(b.titulo || b.sku), "pt-BR"),
+      canal: (a, b) => String(a.canal).localeCompare(String(b.canal)),
+    }[PR.ordem];
+    itens = itens.sort(ord);
+    const total = itens.length;
+    itens = itens.slice(0, PR.limite);
+    if (!total) { $("p-lista").innerHTML = `<p class="p-nota">Nenhum produto neste filtro.</p>`; return; }
+    const v = (x) => (x == null ? "—" : R(x));
+    $("p-lista").innerHTML = `<div class="p-tabela-caixa"><table class="p-tabela">
+      <thead><tr><th>Produto</th><th>Canal</th><th>Preço</th><th>Custo</th><th>Taxas + frete</th><th>Lucro</th><th>Margem</th><th>Mínimo</th><th>Preço p/ 12%</th><th><span class="sr">Ação</span></th></tr></thead>
+      <tbody>${itens.map((x) => {
+        const [rot, cor] = SITUACAO[x.situacao];
+        const analisado = x.lucro != null;
+        return `<tr class="p-${x.situacao}">
+          <td class="p-prod"><b>${esc(x.titulo || "Sem nome")}</b><small>${esc([x.sku, x.canalTexto].filter(Boolean).join(" · "))}</small></td>
+          <td data-r="Canal">${x.canal && MONOGRAMA[x.canal] ? `<span class="p-canal">${logo(x.canal)}${esc(infoCanal(x.canal).nome)}</span>` : "—"}</td>
+          <td data-r="Preço">${v(x.preco)}</td>
+          <td data-r="Custo"><div class="entrada p-custo"><span>R$</span><input data-custo="${x.indice}" inputmode="decimal" aria-label="Custo de ${esc(x.titulo || x.sku)}" value="${x.custo != null ? esc(x.custo.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })) : ""}" placeholder="custo"></div></td>
+          <td data-r="Taxas + frete">${analisado ? R(x.taxasEFrete) : "—"}</td>
+          <td data-r="Lucro">${analisado ? `<b class="${x.lucro >= 0 ? "pos" : "neg"}">${R(x.lucro)}</b>` : `<span class="chip ${cor}">${rot}</span>`}</td>
+          <td data-r="Margem">${analisado ? `<span class="chip ${cor}">${pct(x.margem)}</span>` : "—"}</td>
+          <td data-r="Mínimo">${analisado ? v(x.minimo) : "—"}</td>
+          <td data-r="Preço p/ 12%">${analisado ? `<b>${v(x.precoAlvo)}</b>` : "—"}</td>
+          <td class="p-acao">${analisado ? `<button type="button" class="botao" data-abrir-calc="${x.indice}">Abrir na calculadora</button>` : ""}</td>
+        </tr>`;
+      }).join("")}</tbody></table></div>
+      ${total > itens.length ? `<button type="button" class="botao p-mais" data-p="mais">Mostrar mais (${total - itens.length} restantes)</button>` : ""}`;
+  }
+
+  function abrirNaCalculadora(i) {
+    const x = PR.analise.itens.find((y) => y.indice === i);
+    if (!x) return;
+    const a = PR.dados.ajustes;
+    const br = (n) => n.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    $("custo").value = br(x.custo); $("extras").value = "0,00"; $("preco").value = br(x.preco);
+    $("peso").value = String(x.pesoKg ?? num(a.peso)).replace(".", ","); $("imposto").value = a.imposto; $("categoria").value = x.categoria || a.categoria;
+    $("tamanho").value = "envelope"; $("flex-entrega").value = a.flexEntrega;
+    const pilula = x.canal.replace(/-flex$/, "");
+    estado.canais.add(pilula);
+    if (x.canal.endsWith("-flex")) $("flex-ligado").checked = true;
+    Object.assign(estado, { modo: "preco", exemplo: false, naoGuardar: true, abertas: new Set([x.canal]) });
+    mostrarVista("calculadora");
+    atualizar();
+  }
+
+  // ---------- Eventos da aba ----------
+  $("aba-calculadora").onclick = () => mostrarVista("calculadora");
+  $("aba-produtos").onclick = () => mostrarVista("produtos");
+
+  VP.addEventListener("change", (ev) => {
+    const t = ev.target;
+    if (t.id === "p-arquivo" && t.files.length) { PR.guardar = PR.dados ? PR.guardar : !$("p-nao-guardar")?.checked; lerArquivos([...t.files]); return; }
+    if (t.id === "p-nao-guardar") { PR.guardar = !t.checked; return; }
+    if (t.dataset.campo) { const k = +t.dataset.arq; PR.pendentes[k].org.colunas = { ...PR.pendentes[k].org.colunas, [t.dataset.campo]: +t.value }; reorganizar(k); telaColunas(); return; }
+    if ("canalPadrao" in t.dataset) { const k = +t.dataset.arq; PR.pendentes[k].canalPadrao = t.value; reorganizar(k); telaColunas(); return; }
+    if (t.dataset.custo != null) {
+      const s = t.value.trim();
+      PR.dados.produtos[+t.dataset.custo].custo = s === "" ? null : num(s);
+      salvarEmBreve(); recalcular(); return;
+    }
+    if (t.id === "p-ordem") { PR.ordem = t.value; desenharLista(); }
+  });
+  VP.addEventListener("input", (ev) => {
+    const t = ev.target;
+    if (t.dataset.aj) { PR.dados.ajustes[t.dataset.aj] = t.value; salvarEmBreve(); recalcular(); return; }
+    if (t.id === "p-busca") { PR.busca = t.value; PR.limite = 150; desenharLista(); }
+  });
+  VP.addEventListener("click", (ev) => {
+    const f = ev.target.closest("[data-filtro]");
+    if (f) { PR.filtro = f.dataset.filtro; PR.limite = 150; desenharResumo(); desenharLista(); return; }
+    const c = ev.target.closest("[data-abrir-calc]");
+    if (c) { abrirNaCalculadora(+c.dataset.abrirCalc); return; }
+    const b = ev.target.closest("[data-p]");
+    if (!b) return;
+    const acao = b.dataset.p;
+    if (acao === "analisar") analisarImportacao();
+    else if (acao === "cancelar-importacao") { PR.pendentes = null; PR.erro = ""; desenharProdutos(); }
+    else if (acao === "trancar") { trancar(); avisar(PR.guardar ? "Meus produtos trancado" : "Produtos apagados desta janela"); }
+    else if (acao === "mais") { PR.limite += 150; desenharLista(); }
+    else if (acao === "apagar") { PR.apagando = true; PR.erro = ""; telaSenha(); }
+    else if (acao === "apagar-nao") { PR.apagando = false; telaSenha(); }
+    else if (acao === "apagar-sim") { PR.apagando = false; apagarTudo(); }
+    else if (acao === "apagar-painel") {
+      $("p-confirma-painel").innerHTML = `<div class="p-confirma vidro" role="alert"><p><b>Apagar os seus produtos deste aparelho?</b> Não dá para desfazer.</p>
+        <div class="p-linha-botoes"><button type="button" class="botao p-perigo" data-p="apagar-sim">Apagar</button><button type="button" class="botao" data-p="apagar-cancelar">Cancelar</button></div></div>`;
+    } else if (acao === "apagar-cancelar") $("p-confirma-painel").innerHTML = "";
+  });
+  VP.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    if (ev.target.id === "p-form-senha") {
+      const senha = $("p-senha").value;
+      try {
+        PR.dados = await Cofre.abrir(localStorage.getItem(CHAVE_COFRE), senha);
+        Object.assign(PR, { senha, guardar: true, erro: "", apagando: false });
+        vigiar(); desenharPainel();
+      } catch (_) { PR.erro = "Senha errada. Tente de novo."; telaSenha(); }
+    } else if (ev.target.id === "p-form-criar") {
+      const s1 = $("p-nova").value, s2 = $("p-repete").value;
+      if (s1.length < 6) { PR.erro = "A senha precisa ter pelo menos 6 caracteres."; return telaCriarSenha(); }
+      if (s1 !== s2) { PR.erro = "As duas senhas estão diferentes."; return telaCriarSenha(); }
+      Object.assign(PR, { senha: s1, dados: PR.aguardandoSenha, aguardandoSenha: null, erro: "" });
+      await salvar(); vigiar(); desenharPainel(); avisar("Produtos guardados com senha");
+    }
+  });
+  // Arrastar e soltar planilhas na tela de importação.
+  VP.addEventListener("dragover", (ev) => { const z = ev.target.closest("#p-soltar"); if (z) { ev.preventDefault(); z.classList.add("sobre"); } });
+  VP.addEventListener("dragleave", (ev) => ev.target.closest("#p-soltar")?.classList.remove("sobre"));
+  VP.addEventListener("drop", (ev) => {
+    const z = ev.target.closest("#p-soltar"); if (!z) return;
+    ev.preventDefault(); z.classList.remove("sobre");
+    PR.guardar = !$("p-nao-guardar")?.checked;
+    if (ev.dataTransfer.files.length) lerArquivos([...ev.dataTransfer.files]);
+  });
 
   restaurar();
   atualizar();
